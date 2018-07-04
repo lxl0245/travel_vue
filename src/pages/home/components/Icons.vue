@@ -9,6 +9,7 @@
           <p class="icon-desc">{{item.desc}}</p>
         </div>
       </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -30,7 +31,9 @@ export default {
         { id: '00009', imgUrl: '../../../../static/旅游景点165x165.png', desc: '旅游景点旅游景点旅游景旅游景点旅游景点旅游景点' },
         { id: '00010', imgUrl: '../../../../static/夏日玩水165x165.png', desc: '夏日玩水夏日玩水夏日水夏日玩水夏日玩水夏日玩水' }
       ],
-      swiperOption: {}
+      swiperOption: {
+        pagination: '.swiper-pagination'
+      }
     }
   },
   computed: {
@@ -52,6 +55,8 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/variables.styl'
   @import '~styles/mixins.styl'
+  .icons >>> .swiper-pagination-bullet-active
+    background: #555
   .icons >>> .swiper-container
     overflow: hidden
     width: 100%
@@ -82,6 +87,7 @@ export default {
       right:0
       line-height:0.44rem   //0.44*50 =22px
       color: $darkTextColor
+      font-size: 0.2rem
       //overflow: hidden
       //white-space: nowrap   // 不自动换行
       // text-overflow 属性规定当文本溢出包含元素时发生的事情:
