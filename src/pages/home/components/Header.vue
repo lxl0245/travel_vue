@@ -7,9 +7,11 @@
       <span class="iconfont">&#xe651;</span>
       输入城市/游玩主题
     </div>
-    <div class="header-right">
-      {{city}}<span class="iconfont arror-icon">&#xe65c;</span>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        {{city}}<span class="iconfont arror-icon">&#xe65c;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -25,22 +27,23 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/variables.styl'
   .header
-    line-height: 0.86 rem
+    line-height: $headerLineHeight
     display: flex
     background-color: $bgColor
-    color: #fff
+    color: $headerDefaultColor
     .header-left
       width: 0.64rem
       float: left
       margin-top: 0.12rem
       display: block
       .back-icon
-        font-size: 0.4rem
+        font-size: $backIconFontSize
         text-align: center
     .header-right
       width: 1.24rem
       float: right
       margin-top: 0.12rem
+      color: $headerDefaultFontColor
       .arror-icon
         font-size: 0.3rem
     .header-input
