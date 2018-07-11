@@ -17,7 +17,7 @@
             </div>
           </div>
         </div>
-        <div class="area" v-for="(item, key) of cities" :key="key">
+        <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
           <div class="title border-topbottom">{{key}}</div>
           <div class="item-list">
             <div
@@ -39,10 +39,20 @@ export default {
   name: 'CityList',
   props: {
     cities: Object,
-    hotCities: Array
+    hotCities: Array,
+    letter: String
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.betterScrollWrapper)
+  },
+  watch: {
+    letter () {
+      // 因为我们的城市区域是循环 cities 得到的
+      // 所以， this.$refs[this.letter] 会返回一个长度为 1 的数组
+      // console.log(this.$refs[this.letter])
+      const element = this.$refs[this.letter][0]
+      this.scroll.scrollToElement(element) // 这个方法的参数必须是DOM元素
+    }
   }
 }
 </script>
