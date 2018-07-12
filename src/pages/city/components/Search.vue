@@ -10,6 +10,7 @@
         <li class="search-item border-bottom"
             v-for="item of list"
             :key="item.id"
+            @click="handleCityChose(item.name)"
         >
           {{item.name}}
         </li>
@@ -21,6 +22,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapActions } from 'vuex'
 export default {
   name: 'CitySearch',
   data () {
@@ -30,6 +32,24 @@ export default {
       list: [],
       nomore: false
     }
+  },
+  methods: {
+    handleCityChose (city) {
+      // console.log(city)
+      // 根据Vuex的状态管理模式：
+      // 所有的状态存放在 store 的 state中， 当 state 中的状态改变时，vue components 页面就发生变化。
+      // vue components 要修改 state 中的状态，只能走单向数据流，通过 store 的dispatch 方法触发
+      // actions 中的一个方法，actions 中的方法通过 store 中的commit 方法触发一个mutations中的方法
+      // 修改state中的状态。  当state中的状态改变后，vue components 界面显示的内容就发生了变化。
+      // 调用 store 的dispatch 方法触发一个store 中 actions 的一个方法
+      // this.$store.dispatch('changeCity', city)
+      this.changeCity(city)
+      // 通过 vue-router 跳转到首页
+      this.$router.push('/')
+    },
+    ...mapActions({
+      changeCity: 'changeCity'
+    })
   },
   props: {
     cities: Object
