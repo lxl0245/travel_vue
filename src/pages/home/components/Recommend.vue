@@ -2,7 +2,9 @@
   <div class="hot-list">
     <div class="title">热销推荐</div>
     <ul>
-      <li class="item border-rightbottom"
+      <!--router-link 指定了tag=li，故会转为<li>标签，而不是<a>标签-->
+      <router-link tag="li" :to="'/detail/' + item.id"
+          class="item border-rightbottom"
           v-for="item of recommendList"
           :key="item.id"
       >
@@ -14,7 +16,7 @@
           <p class="item-info-desc">{{item.desc}}</p>
           <p class="item-info-price">{{item.price}} 起</p>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
