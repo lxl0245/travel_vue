@@ -39,8 +39,13 @@ export default {
     }
   },
   activated () {
+    // activated 绑定全局 window 事件；就需要在退出页面时 解绑全局 window 事件
     // 监听 scroll事件，并执行 handleScroll 方法
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    // activated 绑定全局 window 事件；就需要在退出页面时 解绑全局 window 事件
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
