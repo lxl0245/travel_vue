@@ -33,7 +33,7 @@ export default {
       } else {
         let opacity = top / 240 // 240 是图片的高度
         opacity = opacity > 1 ? 1 : opacity
-        this.opacityStyle =  {opacity: opacity}
+        this.opacityStyle = { opacity: opacity }
         this.showAbs = false
       }
     }
